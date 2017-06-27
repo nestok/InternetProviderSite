@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/Style.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="personalarea">
+                <aside>
+                    <form action="/Account/Authorization">
+                        <input name="PA_submit" type="submit" style="background: #111111;" value="Личный кабинет">
+                    </form>
+                    <form action="/Account/Registration">
+                        <input name="PA_registration" type="submit" style="background: #111111; padding-top: 0px;" value="Регистрация">
+                    </form>
+                </aside>
+            </div>
+
+            <br><h1 align="center">SuperInternet</h1>
+        </div>
+        <div class="menu">
+            <a href="/Home/Index">Главная</a>
+            <a href="/Services/Services">Услуги</a>
+        </div>
+        @RenderBody()
+        <hr>
+        <div class="footer">
+            ОДО "SuperInternet" &copy 2016<br>Designed by Sych Y.
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

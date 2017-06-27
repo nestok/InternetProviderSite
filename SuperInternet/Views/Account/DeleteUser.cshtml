@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SuperInternet.Models.User>
+@using System;
+@{
+    ViewBag.Title = "Удаление пользователей";
+}
+
+<div class="AdminRules">
+    <h2 style="padding-left: 50px;">Действия над пользователями</h2>
+    @foreach (var user in ViewBag.Users)
+    {
+    <div class="UserBlock" style="margin-bottom: 200px;">
+        <img src="~/Images/@user.Image" style="width: 200px; float: left;">
+        <div style="padding-left: 50px; float: left;">
+            <h2 style="color: #d4130a;">Никнейм: @user.Nickname </h2>
+
+            <p>E-mail: @user.Email</p>
+
+            @if (!String.IsNullOrEmpty(user.Sername))
+            {
+            <p>Фамилия: @user.Sername</p>
+            }
+
+            @if (!String.IsNullOrEmpty(user.Name))
+            {
+            <p>Имя: @user.Name</p>
+            }
+
+            @if (!String.IsNullOrEmpty(user.Patronymic))
+            {
+            <p>Отчество: @user.Patronymic</p>
+            }
+        </div>
+        <div style="padding-left: 50px; padding-top: 55px; float: left;">
+            @if (!String.IsNullOrEmpty(user.Telephone))
+            {
+            <p>Телефон: @user.Telephone</p>
+            }
+            @if (!String.IsNullOrEmpty(user.Address))
+            {
+            <p>Адрес: user..Address</p>
+            }
+        </div>
+        <form action="/Account/DeleteUser" method="post" style="width: 200px; margin-left: 300px; ">
+            <input name="user_delete" type="submit" id="@user.Id" style="margin-top: 30px;" value="Удалить">
+            <input type="hidden" name="id" value=@user.Id>
+        </form>
+    </div>
+    }
+</div>
+<br>

@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Редактирование личного кабинета";
+}
+
+<div class="ContentSign">
+    <h3 style="padding-left: 450px;">Редактирование профиля</h3>
+    <form action="/Account/PersonalAreaEdit" method="post" enctype="multipart/form-data" style="border-style: none; width: 600px; margin-left: 300px;">
+        <fieldset style="padding-left: 50px; border: none; float: left;">
+            <label for="Nickname">Никнейм:</label><br>
+            <input name="Nickname" type="text" id="Nickname" value="@ViewBag.User.Nickname" pattern="[A-Za-z0-9_-]+" required><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none;">
+            <label for="Image">Аватарка:</label><br>
+            <input name="Image" type="file" id="Image" style="height: 33px;" value="@ViewBag.User.Image"><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none; float: left;">
+            <label for="Sername">Фамилия:</label><br>
+            <input name="Sername" type="text" id="Sername" value="@ViewBag.User.Sername"><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none;">
+            <label for="Name">Имя:</label><br>
+            <input name="Name" type="text" id="Name" value="@ViewBag.User.Name}"><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none; float: left;">
+            <label for="Patronymic">Отчество:</label><br>
+            <input name="Patronymic" type="text" id="Patronymic" value="@ViewBag.User.Patronymic"><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none;">
+            <label for="Tarif">Текущий тариф:</label><br>
+            <input name="Tarif" type="text" id="Tarif" value="@ViewBag.User.Tarif"><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none; float: left;">
+            <label for="Telephone">Телефон:</label><br>
+            <input name="Telephone" type="text" id="Telephone" value="@ViewBag.User.Telephone"><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none;">
+            <label for="Address">Адрес:</label><br>
+            <input name="Address" type="text" id="Address" value="@ViewBag.User.Address"><br>
+        </fieldset>
+        <input type="submit" style="margin-top: 30px; margin-left: 160px;" name="submit_apply" value="Применить">
+    </form>
+
+</div>

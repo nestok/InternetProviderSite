@@ -1,0 +1,98 @@
+﻿@using SuperInternet.Models;
+@using System;
+@{
+    ViewBag.Title = "Личный кабинет";
+}
+
+<div class="ContentPersonal">
+    <h2>Пользователь: @ViewBag.SelectedUser.Nickname</h2>
+    <img src="~/Images/@ViewBag.SelectedUser.Image" style="width: 200px;">
+    <div style="padding-left: 300px;">
+        <h3>Личная информация</h3>
+        <table class="PersonalInfo">
+            <tbody>
+            @if (!String.IsNullOrEmpty(ViewBag.SelectedUser.Sername))
+            {
+                <tr class="Sername">
+                    <td>Фамилия</td>
+                    <td>@ViewBag.SelectedUser.Sername</td>
+                    <td></td>
+                </tr>
+            <td></td>
+            }
+            @if (!String.IsNullOrEmpty(ViewBag.SelectedUser.Name))
+            {
+            <tr class="Name">
+                <td>Имя</td>
+                <td>@ViewBag.SelectedUser.Name</td>
+                <td></td>
+            </tr>
+            <td></td>
+            }
+            @if (!String.IsNullOrEmpty(ViewBag.SelectedUser.Patronymic))
+            {
+            <tr class="Patronymic">
+                <td>Отчество</td>
+                <td>@ViewBag.SelectedUser.Patronymic</td>
+                <td></td>
+            </tr>
+            <td></td>
+            }
+            @if (!String.IsNullOrEmpty(ViewBag.SelectedUser.Tarif))
+            {
+            <tr class="Tarif">
+                <td>Тарифный план</td>
+                <td>"@ViewBag.SelectedUser.Tarif"</td>
+            </tr>
+           }
+            </tbody>
+        </table>
+
+        <h3>Контакты</h3>
+        <table class="Connect">
+            <tbody>
+            @if (!String.IsNullOrEmpty(ViewBag.SelectedUser.Telephone))
+            {
+                <tr class="Telefone">
+                    <td>Телефон</td>
+                    <td>@ViewBag.SelectedUser.Telephone</td>
+                    <td></td>
+                </tr>
+            <td></td>
+            }
+            @if (!String.IsNullOrEmpty(ViewBag.SelectedUser.Email))
+            {
+            <tr class="E-mail">
+                <td>E-mail</td>
+                <td>@ViewBag.SelectedUser.Email</td>
+            </tr>
+            <td></td>
+            }
+            @if (!String.IsNullOrEmpty(ViewBag.SelectedUser.Address))
+            {
+            <tr class="Adress">
+                <td>Адрес</td>
+                <td>@ViewBag.SelectedUser.Address</td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <form action="/Account/PersonalAreaEdit">
+        <input name="PA_reduction" type="submit" style="margin-left: 340px; margin-top: 40px; float: left;" value="Редактировать">
+    </form>
+    <form action="/Account/ChangePassword">
+        <input name="PA_change_passw" type="submit" style="margin-left: 50px; margin-top: 40px; float: left;" value="Сменить пароль">
+    </form>
+    <form action="/Account/ExitPersonalArea">
+        <input name="PA_exit" type="submit" style="margin-left: 50px; margin-top: 40px; float: left;" value="Выйти">
+    </form>
+
+    @if (ViewBag.SelectedUser.Role == UserRole.ADMIN)
+{
+    <form action="/Account/DeleteUser">
+        <input name="PA_users" type="submit" style="margin-top: 40px; margin-left: 50px;" value="Пользователи">
+    </form>
+}
+</div>
+<br>

@@ -1,0 +1,43 @@
+﻿@model SuperInternet.Models.Service
+@{
+    ViewBag.Title = "Добавление услуги";
+}
+
+<div class="ContentSign">
+    <h3 style="padding-left: 450px;">Операции над услугами</h3>
+    <form action="/Services/AddService" method="post" enctype="multipart/form-data" style="border-style: none; width: 600px; margin-left: 300px;">
+      <fieldset style="padding-left: 50px; border: none; float: left;">
+            <label for="tarif">Тарифный план:</label><br>
+            <input name="Tarif" type="text" id="Tarif" value="" pattern="[A-Za-z0-9_-]+" required><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none;">
+            <label for="ConnectionType">Тип подключения:</label><br>
+            <input name="ConnectionType" type="text" id="ConnectionType" value="" required><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none; float: left;">
+            <label for="Payment">Предоплата:</label><br>
+            <input name="Payment" type="text" id="Payment" value="" required><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none;">
+            <label for="Speed">Скорость доступа к сети Интернет:</label><br>
+            <input name="Speed" type="text" id="Speed" value="" required><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none; float: left;">
+            <label for="Term">Срок тарифного плана:</label><br>
+            <input name="Term" type="text" id="Term" value="" required><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none;">
+            <label for="Traffic">Включённый интернет-трафик:</label><br>
+            <input name="Traffic" type="text" id="Traffic" value="" required><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none; float: left;">
+            <label for="SubscrCash">Абонентская плата:</label><br>
+            <input name="SubscrCash" type="text" id="SubscrCash" style="height: 50px; padding-top: 1px;" value="" required><br>
+        </fieldset>
+        <fieldset style="padding-left: 50px; border: none;">
+            <label for="Agreement">Соглашение:</label><br>
+            <input name="Agreement" type="text" id="Agreement" style="height: 50px;" value="" required><br>
+        </fieldset>
+            <input type="submit" style="margin-top: 30px; margin-left: 180px;" name="submit_apply" value="Применить">
+      </form>
+</div>

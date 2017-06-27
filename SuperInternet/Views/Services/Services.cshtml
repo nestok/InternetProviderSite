@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SuperInternet.Models.Service>
+@using SuperInternet.Models;
+@using System;
+@{
+    ViewBag.Title = "Услуги";
+}
+
+<div class="content">
+    <div class="services">
+        <h2>Как подключится?</h2>
+        <p>Для оформления заявки на подключение свяжитесь пожалуйста с отделом по телефону +375293242404 и отправьте запрос на подключение на электронную почту sych_y@mail.ru с указанием вашего контактного номера телефона.</p>
+        <h2>Список подключений</h2>
+        @if ((ViewBag.SelectedUser != null) && (ViewBag.SelectedUser.Role == UserRole.ADMIN))
+        {
+        <form action="/Services/AddService" method="get">
+            <input name="news_add" type="submit" style="margin-left: 50px;" value="Добавить">
+        </form>
+        }
+        @foreach (var ser in ViewBag.Services)
+        {
+            <a href="/Services/ServiceInfo/@ser.Id"><h3>Тарифный план "@ser.Tarif"</h3></a>
+            <table class="PayInter">
+                <tbody>
+                    <tr class="ConnectionType">
+                        <td>Тип подключения</td>
+                        <td>@ser.ConnectionType</td>
+                        <td></td>
+                    </tr>
+                <td></td>
+                    <tr class="Summ">
+                        <td>Предоплата</td>
+                        <td>@ser.Payment руб.</td>
+                        <td></td>
+                    </tr>
+                <td></td>
+                <tr class="SpeedInter">
+                    <td>Скорость доступа к сети Интернет</td>
+                    <td>@ser.Speed</td>
+                </tr>
+                <td></td>
+                <tr class="Term">
+                    <td>Срок действия тарифного плана</td>
+                    <td>@ser.Term</td>
+                </tr>
+                <td></td>
+                <tr class="Traffic">
+                    <td>Включённый интернет-трафик</td>
+                    <td>@ser.Traffic</td>
+                </tr>
+                </tbody>
+            </table>
+            <p>@ser.SubscrCash</p>
+            <p>@ser.Agreement</p>
+            if ((ViewBag.SelectedUser != null) && (ViewBag.SelectedUser.Role == UserRole.ADMIN))
+            {
+            <form action="/Services/Delete" method="post" style="width: 200px; padding-top: 20px; float: left; padding-left: 50px; ">
+                <input type="submit" value="Удалить">
+                <input type="hidden" name="id" value=@ser.Id>
+            </form>            
+            <form action="/Services/EditService" method="get" style="width: 200px; float: left; padding-top: 20px;">
+                <input type="submit" value="Редактировать">
+                <input type="hidden" name="id" value=@ser.Id>
+            </form>
+            <br><br><br><br>}
+        }
+    </div>
+</div>

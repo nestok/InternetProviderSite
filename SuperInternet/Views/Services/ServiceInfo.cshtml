@@ -1,0 +1,72 @@
+﻿@model IEnumerable<SuperInternet.Models.Comment>
+@using SuperInternet.Models;
+@using System;
+@{
+    ViewBag.Title = @ViewBag.Service.Tarif;
+}
+
+<div class="content">
+    <div class="services">
+        <h2>Страница услуги</h2>
+        <h3>Тарифный план "@ViewBag.Service.Tarif"</h3>
+        <table class="PayInter">
+            <tbody>
+                <tr class="ConnectionType">
+                    <td>Тип подключения</td>
+                    <td>@ViewBag.Service.ConnectionType</td>
+                    <td></td>
+                </tr>
+            <td></td>
+            <tr class="Summ">
+                <td>Предоплата</td>
+                <td>@ViewBag.Service.Payment руб.</td>
+                <td></td>
+            </tr>
+            <td></td>
+            <tr class="SpeedInter">
+                <td>Скорость доступа к сети Интернет</td>
+                <td>@ViewBag.Service.Speed</td>
+            </tr>
+            <td></td>
+            <tr class="Term">
+                <td>Срок действия тарифного плана</td>
+                <td>@ViewBag.Service.Term</td>
+            </tr>
+            <td></td>
+            <tr class="Traffic">
+                <td>Включённый интернет-трафик</td>
+                <td>@ViewBag.Service.Traffic</td>
+            </tr>
+            </tbody>
+        </table>
+        <p>@ViewBag.Service.SubscrCash</p>
+        <p>@ViewBag.Service.Agreement</p>
+    </div>
+    <hr><br>
+    @foreach (var comment in ViewBag.Comments)
+    {
+    <img src="~/Images/@comment.Sender.Image" width="100" height="100" style="padding-left: 50px; float: left">
+    <p style=" padding-left: 170px">@comment.Sender.Nickname</p>
+    <div class="DiscBlock">
+        <div class="thisDisc">
+            <p>@comment.Text</p>
+            @if ((ViewBag.SelectedUser != null) && (ViewBag.SelectedUser.Role == UserRole.ADMIN))
+            {
+                <form action="/Services/DeleteComment" method="post" class="set_comment">
+                    <input name="comment_delete" type="submit" id="@comment.Id" style="margin-top: 10px; margin-left: 500px;" value="Удалить">
+                    <input type="hidden" name="id" value=@comment.Id>
+                </form>
+            }
+        </div>
+    </div>
+    <br>
+    }
+    @if (ViewBag.SelectedUser != null)
+    {
+    <h3 style="padding-left: 50px; color: #d4130a">Добавьте ваш комментарий:</h3>
+    <form action="../AddComment?serviceId=@ViewBag.Service.Id" method="post" class="set_comment">
+        <input name="commentText" type="text" id="text" maxlength="1500" style="padding-bottom: 80px; padding-top: 1px; margin-bottom: 30px;" minlength="5" required><br>
+        <input name="add_comment" type="submit" id="" value="Отправить" style="margin-left: 800px;">
+    </form>
+    }
+</div>

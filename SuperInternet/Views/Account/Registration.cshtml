@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Регистрация";
+}
+
+<div class="ContentSign">
+    <h3 style="padding-left: 400px;">Регистрация</h3>
+
+    <form action="Registration" method="post" class="set_info">
+        <fieldset>
+            <label for="Nickname">Имя пользователя:</label><br>
+            <input type="username" name="Nickname" id="Nickname" maxlength="25" minlength="3" pattern="[A-Za-z0-9_-]+" required><br>
+        </fieldset>
+        <fieldset>
+            <label for="Email">E-mail:</label><br>
+            <input type="Email" name="Email" id="Email" maxlength="25" required><br>
+        </fieldset>
+        <fieldset>
+            <label for="Password">Пароль:</label><br>
+            <input type="Password" name="Password" id="Password" maxlength="25" minlength="5" pattern="[A-Za-z0-9_-]+" required><br>
+        </fieldset>
+        <fieldset>
+            <label for="RepeatPassword">Повторите пароль:</label><br>
+            <input type="Password" name="RepeatPassword" id="RepeatPassword" maxlength="25" minlength="5" pattern="[A-Za-z0-9_-]+" required><br>
+        </fieldset>
+        <fieldset style="text-align: center">
+            <input type="submit" value="Зарегистрироваться">
+        </fieldset>
+    </form>
+</div>

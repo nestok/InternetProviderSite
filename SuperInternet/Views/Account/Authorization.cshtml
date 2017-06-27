@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Авторизация";
+}
+
+<div class="ContentSign">
+    <h3 style="padding-left: 400px;">Вход</h3>
+
+    <form action="Authorization" method="post" class="set_info">
+        <fieldset>
+            <label for="Email">E-mail:</label><br>
+            <input type="email" id="Email" name="Email" maxlength="25" minlength="8" required><br>
+        </fieldset>
+        <fieldset>
+            <label for="Password">Пароль:</label><br>
+            <input type="password" id="Password" name="Password" maxlength="25" minlength="5" pattern="[A-Za-z0-9_-]+" required><br>
+        </fieldset>
+        <fieldset style="text-align: center">
+            <input type="submit" name="submit_login" value="Войти">
+        </fieldset>
+    </form>
+    <form action="/Account/Registration" method="get" class="set_info" style="border-style: none; padding-left: 110px; ">
+        <input type="submit" name="submit_sign" value="Регистрация" style="margin-top: 20px; float: left;">
+    </form>
+    <!--<form action="login_in.php" method="get" class="set_info" style="border-style: none;">
+        <input type="submit" name="submit_password_restore" value="Забыли пароль" style="margin-top: 20px; margin-left: 60px;">
+    </form>-->
+</div>
